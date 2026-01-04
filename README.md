@@ -23,3 +23,5 @@ C'est l'outil idéal si vous créez un profil secondaire (par exemple pour vous-
 
 ```bash
 pip install plexapi
+
+Comment trouver son Token ? > Consultez cet article : [Finding your Plex Authentication Token](https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/)
