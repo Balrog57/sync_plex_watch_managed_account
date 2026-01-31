@@ -1,0 +1,2 @@
+PlexAPI
+PySide6

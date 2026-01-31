@@ -23,49 +23,41 @@ Avant d'utiliser ce script, assurez-vous d'avoir :
 4.  Le compte source et le compte cible doivent avoir accès aux **mêmes bibliothèques** sur le **même serveur** (le script utilise les IDs internes de la base de données Plex).
 
 ## 📦 Installation
-
-1.  Clonez ce dépôt ou téléchargez le fichier `sync_plex_watch_managed_account.py`.
-2.  Installez la librairie `plexapi` via pip :
-
-```bash
-pip install plexapi
-```
-
-## ⚙️ Configuration
-
-Vous devez modifier le script pour y renseigner vos informations.
-
-1.  Ouvrez le fichier `sync_plex_watch_managed_account.py` avec un éditeur de texte (Notepad, VS Code, Nano, etc.).
-2.  Modifiez la section **"VOS INFORMATIONS"** au début du fichier :
-
-```python
-# --- VOS INFORMATIONS ---
-PLEX_URL = 'http://192.168.1.10:32400'  # URL de votre serveur (IP locale ou domaine)
-PLEX_TOKEN = '<PLEX_TOKEN>'    # Votre Token Admin trouvé précédemment
-USER_SOURCE = 'MonPseudoAdmin'          # Le nom exact du compte source (Admin)
-USER_TARGET = 'PseudoUtilisateurGere'   # Le nom exact de l'utilisateur géré (Cible)
-# ------------------------
-```
-
-*   **PLEX_URL** : L'adresse de votre serveur (ex: `http://localhost:32400` ou `http://192.168.x.x:32400`).
-*   **PLEX_TOKEN** : Le jeton de l'admin.
-*   **USER_SOURCE** : Le nom d'utilisateur du compte qui a déjà l'historique (sensible à la casse).
-*   **USER_TARGET** : Le nom de l'utilisateur géré qui doit recevoir l'historique.
-
-## ▶️ Utilisation
-
-Une fois configuré, lancez simplement le script avec Python :
-
-```bash
-python sync_plex_watch_managed_account.py
-```
-
-Le script va :
-1.  Se connecter au serveur.
-2.  Récupérer le token de l'utilisateur géré.
-3.  Parcourir toutes les bibliothèques.
-4.  Comparer les statuts et synchroniser si nécessaire.
-5.  Afficher dans la console les éléments mis à jour (`[VU]` ou `[EN COURS]`).
+ 
+ 1.  Clonez ce dépôt ou téléchargez le fichier `sync_plex_watch_managed_account.py`.
+ 2.  Installez les librairies requises (`plexapi` et `PySide6`) via pip :
+ 
+ ```bash
+ pip install -r requirements.txt
+ ```
+ 
+ Ou manuellement :
+ ```bash
+ pip install plexapi PySide6
+ ```
+ 
+ ## ⚙️ Configuration & Utilisation
+ 
+ 1.  Lancez l'application :
+ ```bash
+ python sync_plex_watch_managed_account.py
+ ```
+ 
+ 2.  Une interface graphique s'ouvre. Remplissez les champs :
+      *   **Plex URL** : L'adresse de votre serveur (ex: `http://localhost:32400` ou `http://192.168.x.x:32400`).
+      *   **Plex Token** : Le jeton de l'admin. [Comment le trouver ?](https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/)
+      *   **Compte Source** : Le nom d'utilisateur du compte qui a déjà l'historique (Admin par défaut).
+      *   **Compte Cible** : Le nom de l'utilisateur géré qui doit recevoir l'historique.
+ 
+ 3.  Cliquez sur **"Sauvegarder Config"** pour mémoriser vos paramètres pour la prochaine fois.
+ 
+ 4.  Cliquez sur **"Lancer la Synchro"**.
+ 
+ Le script va afficher la progression dans la zone de logs :
+ *   Connexion au serveur.
+ *   Récupération du token de l'utilisateur géré.
+ *   Parcours des bibliothèques et synchronisation.
+ *   Afficher dans la console les éléments mis à jour (`[VU]` ou `[EN COURS]`).
 
 ## ❓ Dépannage
 
